@@ -42,20 +42,6 @@ public class RUpgradePlugin implements FlutterPlugin, ActivityAware {
         _channel.setMethodCallHandler(new RUpgradeMethodCallHandler(upgradeManager));
     }
 
-    /**
-     * Plugin registration.
-     */
-    public static void registerWith(final Registrar registrar) {
-
-        new RUpgradePlugin(registrar.activity(), registrar.messenger(), new DownloadPermissions.PermissionsRegistry() {
-            @Override
-            public void addListener(PluginRegistry.RequestPermissionsResultListener handler) {
-                registrar.addRequestPermissionsResultListener(handler);
-            }
-        });
-    }
-
-
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
         this.flutterPluginBinding = binding;
